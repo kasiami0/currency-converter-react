@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Header";
+import Container from "./Container";
+import Footer from "./Footer";
+import Form from "./Form";
+import Result from "./Result";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header header="Kalkulator walutowy" />
+      <Form />
+      <Result />
+      <Footer footer="Krursy pochodzą ze strony nbp.pl z Tabeli nr 223/A/NBP/2022 z dnia 2022-11-18" />
+    </Container>
   );
 }
 
