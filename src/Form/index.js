@@ -1,23 +1,52 @@
 import "./style.css"
+import { currencies } from "../currencies";
+import { useState } from "react";
 
-const Form = () => (
-    <form className="form">
-        <fieldset className="form__fieldset">
-            <legend className="form__legend">Przelicz na PLN</legend>
-            <p><label><span className="form__label">Waluta:</span>
-                <select className="form__field" required>
-                    <option value="EUR">Euro</option>
-                    <option value="USD">Dolar amerykański</option>
-                    <option value="CHF">Frank szwajcarski</option>
-                    <option value="GBP">Funt brytyjski</option>
-                </select></label></p>
-            <p><label><span className="form__label">*Kwota:</span>
-                <input className="form__field" type="number"
-                step="0.01" min="1" required /></label></p>
-            <footer>* - wymagane pola</footer>
-        </fieldset>
-        <button className="form__button">Przelicz</button>
+const Form = ({ calculateResult }) => {
+  const [amount, setAmount] = useState("");
+  const [currency, setCurrency] = useState(currencies[0].code)
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    calculateResult(amount, currency);
+    setAmount("");
+  };
+
+  return (
+    <form onSubmit={onFormSubmit} className="form">
+      <fieldset className="form__fieldset">
+        <legend className="form__legend">Przelicz na PLN</legend>
+        <p><label>
+          <span className="form__label">Waluta:</span>
+          <select
+            value={currency}
+            onChange={(event => setCurrency(event.target.value))}
+            className="form__field"
+          >
+            {currencies.map(currency => (
+              <option key={currency.id} value={currency.code}>
+                {currency.name}
+              </option>
+            ))};
+          </select>
+        </label></p>
+        <p><label>
+          <span className="form__label">*Kwota:</span>
+          <input
+            value={amount}
+            onChange={(event => setAmount(event.target.value))}
+            className="form__field"
+            type="number"
+            step="0.01"
+            min="1"
+            required
+          />
+        </label></p>
+        <footer>* - wymagane pola</footer>
+      </fieldset>
+      <button className="form__button">Przelicz</button>
     </form>
-);
+  );
+};
 
 export default Form;
