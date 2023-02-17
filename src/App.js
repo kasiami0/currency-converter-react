@@ -24,10 +24,7 @@ function App() {
       <Header header="Kalkulator walutowy" />
       <Form calculateResult={calculateResult} />
       <Result result={result} />
-      <Footer
-        footer="Krursy pochodzą ze strony nbp.pl z Tabeli nr 223/A/NBP/2022
-          z dnia 2022-11-18"
-      />
+      <Footer />
     </Container>
   );
 }
