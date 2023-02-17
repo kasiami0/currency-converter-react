@@ -14,8 +14,8 @@ function App() {
 
     setResult({
       initialAmount: +amount,
-      resultAmount: amount * rate,
       currency,
+      resultAmount: amount * rate,
     });
   };
 
