@@ -33,9 +33,11 @@
     border: none;
     padding: 10px;
     border-radius: 5%;
+    transition: background 0.5s;
 }
 .form__button:hover {
 background-color: hsl(195, 100%, 50%);
+cursor: pointer;
 }
 .form__button:active {
     background-color: blue;
